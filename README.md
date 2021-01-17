@@ -17,6 +17,6 @@ When creating any user/appliction, **DO NOT** include any **personally identifib
 Please make sure **/npm_modules** is included in **.gitignore**
 
 Authentication:  
-**user**: test@auth.es  
+**user**: admin@auth.es  
 **password**: passtoken  
 **scope**: auth  
