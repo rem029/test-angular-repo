@@ -1,0 +1,27 @@
+<div class="user">
+  <div class="user-container-left">
+    <label for="email">EMAIL</label>
+    <input type="email" disabled />
+  </div>
+
+  <div class="user-container-right">
+    <div class="user-container-right-actions">
+      <a href="#" class="font-blue" (click)="onClickLink($event)"
+        ><fa-icon [icon]="faEdit"></fa-icon
+      ></a>
+      <a href="#" class="font-red" (click)="onClickLink($event)"
+        ><fa-icon [icon]="faTimes"></fa-icon
+      ></a>
+      <!-- 
+      <a href="#" class="font-blue">edit</a>
+      <a href="#" class="font-red">delete</a> -->
+    </div>
+
+    <div class="user-container-right-dropdown">
+      <a href="#" class="font-green" (click)="onClickLink($event)">
+        <span>see apps</span>
+        <span><fa-icon [icon]="faAngleDown"></fa-icon></span>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+.user {
+  border: 5px solid #000;
+  box-sizing: border-box;
+  margin: 2px 2px;
+  padding: 0 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+
+.user-container-left {
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  margin: 10px 0;
+}
+
+label {
+  font-family: "Noto Sans JP";
+  font-size: 12px;
+  font-weight: bold;
+  color: #929292;
+
+  display: block;
+}
+
+input {
+  width: 90%;
+  max-width: 450px;
+  height: 35px;
+  outline: none;
+  font-family: "Noto Sans JP";
+  font-size: 14px;
+  border: 2px solid #e2e2e2;
+  display: block;
+}
+
+input:focus {
+  border: 4px solid #000;
+}
+
+.user-container-right {
+  height: 100%;
+  margin: 10px 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-container-right-actions {
+  height: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-container-right-actions > a {
+  margin: 5px 5px;
+  font-size: 18px;
+}
+
+.font-blue {
+  color: blue;
+}
+
+.font-red {
+  color: red;
+}
+
+.font-green {
+  color: green;
+}
+
+.user-container-right-dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.user-container-right-dropdown > a {
+  text-decoration: none;
+  font-size: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}

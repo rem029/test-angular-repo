@@ -1,0 +1,31 @@
+.app-list-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.app-list {
+  width: 50%;
+  height: auto;
+  min-height: 70%;
+  max-width: 750px;
+  min-width: 300px;
+
+  border: 5px solid #000;
+  transform: translateY(15%);
+}
+
+.app-list-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-bottom: 5px solid #000;
+}

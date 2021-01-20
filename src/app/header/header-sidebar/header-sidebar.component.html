@@ -1,0 +1,19 @@
+<nav class="{{ isDrawerOpen ? 'side-bar open' : 'side-bar' }}">
+  <ul>
+    <li routerLinkActive="link-active">
+      <a (click)="onClickLink()" routerLink="/app-user-list">
+        <fa-icon [icon]="faUsers"></fa-icon>
+      </a>
+    </li>
+    <li routerLinkActive="link-active">
+      <a (click)="onClickLink()" routerLink="/app-application-list">
+        <fa-icon [icon]="faLaptop"></fa-icon>
+      </a>
+    </li>
+    <li routerLinkActive="link-active">
+      <a class="link-login" (click)="onClickLink()" routerLink="/app-login"
+        >LOGIN</a
+      >
+    </li>
+  </ul>
+</nav>

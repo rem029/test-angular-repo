@@ -1,0 +1,39 @@
+<div class="login">
+  <form class="login-form" action="">
+    <h1>AUTH PROCESS</h1>
+    <div class="login-form-container-center">
+      <div class="login-form-controls">
+        <div class="login-form-controls-input">
+          <label for="email">EMAIL</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            [(ngModel)]="email"
+          />
+        </div>
+
+        <div class="login-form-controls-input">
+          <label for="password">PASSWORD</label>
+          <input
+            type="{{ showPassword ? 'text' : 'password' }}"
+            name="password"
+            placeholder="password"
+            [(ngModel)]="password"
+          />
+        </div>
+
+        <div class="login-form-controls-checkbox">
+          <label for="showPassword">Show password</label>
+          <input
+            type="checkbox"
+            name="showPassword"
+            (click)="toggleShowPassword($event)"
+          />
+        </div>
+
+        <button class="btn-submit" (click)="onLogin()">LOGIN</button>
+      </div>
+    </div>
+  </form>
+</div>
