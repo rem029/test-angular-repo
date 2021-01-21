@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 
 import { LogInAuthService } from '../__services/login-auth.service';
-import { LogInAuthModel } from './login-auth.model';
+import { LogInAuthModel } from '../__models/login-auth.model';
 import {
   toggleShowPassword,
   onLoginError,

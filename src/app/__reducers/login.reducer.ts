@@ -5,7 +5,7 @@ import {
   onLoginSuccess,
   toggleShowPassword,
 } from '../__actions/login.action';
-import { LogInAuthModel } from '../login/login-auth.model';
+import { LogInAuthModel } from '../__models/login-auth.model';
 
 export const initialState: LogInAuthModel = {
   toggleShowPassword: false,

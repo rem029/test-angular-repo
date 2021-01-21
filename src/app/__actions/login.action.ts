@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { LogInAuthModel } from '../login/login-auth.model';
+import { LogInAuthModel } from '../__models/login-auth.model';
 
 export const toggleShowPassword = createAction(
   '[LoginPassword Component] TOGGLE'
