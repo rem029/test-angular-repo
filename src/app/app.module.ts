@@ -2,14 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
 import { Routes, RouterModule } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+
 import { AppRoutingModule } from './app-routing.module';
 
-import { sideBarReducer } from './reducers/sidebar.reducer';
-import { loginReducer } from './reducers/login.reducer';
+import { sideBarReducer } from './__reducers/sidebar.reducer';
+import { loginReducer } from './__reducers/login.reducer';
 
 import { AppComponent } from './app.component';
 
@@ -61,7 +62,7 @@ const routes: Routes = [
     }),
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

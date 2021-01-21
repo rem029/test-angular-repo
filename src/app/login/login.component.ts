@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 
-import { LoginAuthService } from './login-auth.service';
-import { toggleShowPassword } from '../actions/login.action';
+import { LogInAuthService } from '../__services/login-auth.service';
+import { LogInAuthModel } from './login-auth.model';
+import {
+  toggleShowPassword,
+  onLoginError,
+  onLoginSuccess,
+} from '../__actions/login.action';
 
 @Component({
   selector: 'app-login',
@@ -13,37 +18,65 @@ import { toggleShowPassword } from '../actions/login.action';
 export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
-  showPassword: boolean = false;
+  logInModel: LogInAuthModel = {
+    toggleShowPassword: false,
+    isLoggedIn: false,
+    isLoggedInError: false,
+    token: '',
+    lastCode: 0,
+  };
+  formStatus = '';
 
   constructor(
-    private store: Store<{ loginShowPassword: boolean }>,
+    private store: Store<{ loginShowPassword: LogInAuthModel }>,
     private http: HttpClient,
-    private loginAuthService: LoginAuthService
+    private loginAuthService: LogInAuthService
   ) {
     this.store.select('loginShowPassword').subscribe((value) => {
-      this.showPassword = value;
+      this.logInModel = value;
+
+      console.log('onINIT', this.logInModel);
     });
   }
 
   ngOnInit(): void {}
 
   onLogin() {
+    this.formStatus = '';
     if (this.email.length > 0 && this.password.length > 0) {
-      console.log('email', this.email);
-      console.log('password', this.password);
-
       this.loginAuthService.login(this.email, this.password).subscribe(
-        (response) => {
-          console.log('LOGIN RESPONSE', response);
+        (response: any) => {
+          this.store.dispatch(
+            onLoginSuccess({
+              logInAuthModel: {
+                ...this.logInModel,
+                token: response.data.jwt,
+                isLoggedIn: true,
+                isLoggedInError: false,
+                lastCode: response.code,
+              },
+            })
+          );
 
-          // ...SAVE TOKEN IN COOKIE
+          this.loginAuthService.tokenSave(this.logInModel.token);
         },
-        (error) => {
-          console.log('LOGIN ERROR', error);
-
-          // ...SHOW ERROR MSG IN UI TOKEN IN COOKIE
+        (error: any) => {
+          this.store.dispatch(
+            onLoginError({
+              logInAuthModel: {
+                ...this.logInModel,
+                token: '',
+                isLoggedIn: true,
+                isLoggedInError: true,
+                lastCode: error.error.code,
+              },
+            })
+          );
+          this.loginAuthService.tokenDelete();
         }
       );
+    } else {
+      this.formStatus = 'Please enter email and password.';
     }
   }
 

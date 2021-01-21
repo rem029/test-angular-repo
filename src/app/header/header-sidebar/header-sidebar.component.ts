@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faUsers, faLaptop } from '@fortawesome/free-solid-svg-icons';
 
 import { Store } from '@ngrx/store';
-import { toggle } from '../../actions/sidebar.actions';
+import { toggle } from '../../__actions/sidebar.actions';
 
 @Component({
   selector: 'app-header-sidebar',

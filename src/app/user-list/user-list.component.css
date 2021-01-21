@@ -28,4 +28,12 @@
   padding: 0 10px;
   box-sizing: border-box;
   border-bottom: 5px solid #000;
+  background-color: #000;
+  color: #fff;
+}
+
+.user-list-heading > a {
+  text-decoration: none;
+  color: #32db57;
+  font-size: 24px;
 }

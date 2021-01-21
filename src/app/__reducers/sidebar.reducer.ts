@@ -1,7 +1,7 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { toggle, get, set } from '../actions/sidebar.actions';
+import { toggle, get, set } from '../__actions/sidebar.actions';
 
-import { HeaderSideBarService } from '../header/header-sidebar-service';
+import { HeaderSideBarService } from '../__services/header-sidebar-service';
 
 export const initialState = new HeaderSideBarService().get();
 const headerSideBarState = new HeaderSideBarService();
