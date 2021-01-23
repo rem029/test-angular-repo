@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 
-import { LogInAuthService } from '../__services/login-auth.service';
+import { AuthService } from '../__services/auth.service';
 import { LogInAuthModel } from '../__models/login-auth.model';
 import {
   toggleShowPassword,
@@ -12,10 +12,10 @@ import {
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.css'],
 })
-export class LoginComponent implements OnInit {
+export class AuthComponent implements OnInit {
   email: string = '';
   password: string = '';
   logInModel: LogInAuthModel = {
@@ -30,12 +30,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private store: Store<{ loginShowPassword: LogInAuthModel }>,
     private http: HttpClient,
-    private loginAuthService: LogInAuthService
+    private loginAuthService: AuthService
   ) {
     this.store.select('loginShowPassword').subscribe((value) => {
       this.logInModel = value;
-
-      console.log('onINIT', this.logInModel);
     });
   }
 

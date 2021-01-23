@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieManager } from '../__utils/cookie';
 
 @Injectable({ providedIn: 'root' })
-export class LogInAuthService {
+export class AuthService {
   private url = 'https://devautentica.brainyinteligencia.com';
   private apiParam = '?scope=auth';
   private pathTokenGet = '/tokens';

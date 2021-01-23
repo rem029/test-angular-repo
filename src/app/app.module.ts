@@ -14,7 +14,7 @@ import { loginReducer } from './__reducers/login.reducer';
 
 import { AppComponent } from './app.component';
 
-import { LoginComponent } from './login/login.component';
+import { AuthComponent } from './auth/auth.component';
 
 import { UserListComponent } from './user-list/user-list.component';
 import { UserComponent } from './user-list/user/user.component';
@@ -29,17 +29,17 @@ import { HeaderSideBarComponent } from './header/header-sidebar/header-sidebar.c
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: 'app-login', component: LoginComponent },
-  { path: 'app-user-list', component: UserListComponent },
-  { path: 'app-application-list', component: ApplicationListComponent },
-  { path: '', redirectTo: '/app-login', pathMatch: 'full' },
+  { path: 'auth', component: AuthComponent },
+  { path: 'user-list', component: UserListComponent },
+  { path: 'application-list', component: ApplicationListComponent },
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    AuthComponent,
     UserListComponent,
     UserComponent,
     ApplicationListComponent,
