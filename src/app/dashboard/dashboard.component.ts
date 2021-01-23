@@ -62,6 +62,7 @@ export class DashboardComponent implements OnInit {
             );
             this.store.dispatch(setLoggedIn({ isLoggedIn: false }));
             this.store.dispatch(resetAuthState());
+            this.authService.tokenDelete();
             this.router.navigateByUrl(paths.auth);
           }
         );
