@@ -2,22 +2,25 @@
   <div class="user-list">
     <div class="user-list-heading">
       <h2>Users</h2>
-      <a href="#"><fa-icon [icon]="faPlusCircle"></fa-icon></a>
+      <a href="#"
+        ><fa-icon [icon]="faPlusCircle" (click)="AddUser($event)"></fa-icon
+      ></a>
     </div>
     <div class="user-list-control">
       <button (click)="userPrev()">
         <fa-icon [icon]="faArrowLeft"></fa-icon>
       </button>
-      <p>{{ users._meta.page + " of " + users._meta.total_pages }}</p>
-      <p>{{ "Total user:  " + users._meta.total_items }}</p>
+      <p>{{ usersModel._meta.page + " of " + usersModel._meta.total_pages }}</p>
+      <p>{{ "Total user:  " + usersModel._meta.total_items }}</p>
       <button (click)="userNext()">
         <fa-icon [icon]="faArrowRight"></fa-icon>
       </button>
     </div>
     <div class="user-list-items">
-      <div *ngFor="let user of users.users">
-        <app-user></app-user>
-      </div>
+      <app-user
+        *ngFor="let user of usersModel.users"
+        [userModel]="user"
+      ></app-user>
     </div>
   </div>
 </div>

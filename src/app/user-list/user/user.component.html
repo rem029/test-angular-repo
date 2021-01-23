@@ -1,24 +1,14 @@
 <div class="user">
-  <div class="user-container-left">
+  <div class="user-container-user">
     <!-- <label for="email">EMAIL</label> -->
-    <input type="email" disabled />
+    <input type="email" disabled value="{{ userModel.email }}" />
   </div>
 
-  <div class="user-container-right">
-    <div class="user-container-right-actions">
-      <a href="#" class="font-blue" (click)="onClickLink($event)"
-        ><fa-icon [icon]="faEdit"></fa-icon
-      ></a>
-      <a href="#" class="font-red" (click)="onClickLink($event)"
-        ><fa-icon [icon]="faTimes"></fa-icon
-      ></a>
-    </div>
-
-    <div class="user-container-right-dropdown">
-      <a href="#" class="font-green" (click)="onClickLink($event)">
-        <span>apps</span>
-        <span><fa-icon [icon]="faAngleDown"></fa-icon></span>
-      </a>
+  <div class="user-container-apps">
+    <div class="user-container-apps-list" *ngFor="let app of apps">
+      <h4>{{ app.name }}</h4>
+      <p>{{ app.scope }}</p>
+      <a href="{{ app.url }}">{{ app.url }}</a>
     </div>
   </div>
 </div>

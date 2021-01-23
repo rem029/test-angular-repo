@@ -21,6 +21,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { UserListComponent } from './user-list/user-list.component';
 import { UserComponent } from './user-list/user/user.component';
+import { UserNewComponent } from './user-list/user-new/user-new.component';
 
 import { ApplicationListComponent } from './application-list/application-list.component';
 import { ApplicationComponent } from './application-list/application/application.component';
@@ -32,11 +33,13 @@ import { HeaderSideBarComponent } from './header/header-sidebar/header-sidebar.c
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { paths } from './__paths/paths';
+import { appsReducer } from './__reducers/apps.reducers';
 
 const routes: Routes = [
   { path: paths.auth, component: AuthComponent },
   { path: paths.dashboard, component: DashboardComponent },
   { path: paths.userList, component: UserListComponent },
+  { path: paths.userListNew, component: UserNewComponent },
   { path: paths.appList, component: ApplicationListComponent },
   { path: '', redirectTo: '/' + paths.auth, pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
@@ -55,6 +58,7 @@ const routes: Routes = [
     HeaderSideBarButton,
     HeaderSideBarComponent,
     DashboardComponent,
+    UserNewComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,7 @@ const routes: Routes = [
       auth: authReducer,
       dashboard: dashboardReducer,
       users: usersReducer,
+      apps: appsReducer,
     }),
   ],
   exports: [RouterModule],

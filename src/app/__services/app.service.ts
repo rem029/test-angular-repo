@@ -2,23 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
-export class UsersService {
+export class AppsService {
   private url = 'https://devautentica.brainyinteligencia.com';
   private apiParamScope = '?scope=auth';
   private apiParamPage = { page: 'page=', per_page: 'per_page=' };
-  private apiPath = '/users/';
+  private apiPath = '/applications/';
 
   constructor(private http: HttpClient) {}
 
-  createUsers(token: string, body: {}) {
-    return this.http.post(
-      this.url + this.apiPath + this.apiParamScope,
-      body,
-      this.httpOptionsSetup(token)
-    );
-  }
-
-  getUsers(token: string, page: number = 1, per_page: number = 50) {
+  getApps(token: string, page: number = 1, per_page: number = 50) {
     return this.http.get(
       this.url +
         this.apiPath +
@@ -33,7 +25,7 @@ export class UsersService {
     );
   }
 
-  getUsersById(id: number, token: string) {
+  getAppById(id: number, token: string) {
     return this.http.get(
       this.url + this.apiPath + id + this.apiParamScope,
       this.httpOptionsSetup(token)

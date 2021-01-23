@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 import { UsersService } from '../__services/users.service';
 import { AuthService } from '../__services/auth.service';
@@ -18,13 +19,15 @@ import {
   usersPrevPage,
 } from '../__actions/users.actions';
 
+import { paths } from '../__paths/paths';
+
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
-  users: UsersModel = {
+  usersModel: UsersModel = {
     lastCode: 0,
     isLoading: false,
     users: [],
@@ -43,30 +46,44 @@ export class UserListComponent implements OnInit {
   constructor(
     private userService: UsersService,
     private authService: AuthService,
-    private store: Store<{ users: UsersModel }>
+    private store: Store<{ users: UsersModel }>,
+    private router: Router
   ) {
     this.store.select('users').subscribe((state) => {
-      this.users = state;
+      this.usersModel = state;
     });
   }
 
   ngOnInit(): void {
-    console.log('USERS NG ON INIT', this.users._meta);
-    this.refreshUsers(this.users._meta.page, this.users._meta.per_page);
+    this.refreshUsers(
+      this.usersModel._meta.page,
+      this.usersModel._meta.per_page
+    );
   }
 
   userNext() {
-    if (this.users._meta.page < this.users._meta.total_pages) {
+    if (this.usersModel._meta.page < this.usersModel._meta.total_pages) {
       this.store.dispatch(usersNextPage());
-      this.refreshUsers(this.users._meta.page, this.users._meta.per_page);
+      this.refreshUsers(
+        this.usersModel._meta.page,
+        this.usersModel._meta.per_page
+      );
     }
   }
 
   userPrev() {
-    if (this.users._meta.page > 1) {
+    if (this.usersModel._meta.page > 1) {
       this.store.dispatch(usersPrevPage());
-      this.refreshUsers(this.users._meta.page, this.users._meta.per_page);
+      this.refreshUsers(
+        this.usersModel._meta.page,
+        this.usersModel._meta.per_page
+      );
     }
+  }
+
+  AddUser(event: any) {
+    event.preventDefault();
+    this.router.navigateByUrl(paths.userListNew);
   }
 
   refreshUsers(page: number, per_page: number) {
@@ -76,8 +93,6 @@ export class UserListComponent implements OnInit {
         .getUsers(this.authService.tokenGet(), page, per_page)
         .subscribe(
           (response: any) => {
-            console.log('REFRESH USERS RESPONSE', response);
-
             let users: UsersModel;
 
             users = {
@@ -88,11 +103,8 @@ export class UserListComponent implements OnInit {
             };
 
             this.store.dispatch(setUsers({ users: users }));
-
-            console.log('REFRESH USERS THIS', this.users);
           },
           (error) => {
-            console.log('REFRESH USERS ERROR', error);
             let users: UsersModel;
             users = {
               isLoading: false,
@@ -101,8 +113,6 @@ export class UserListComponent implements OnInit {
               _meta: { page: 0, per_page: 0, total_pages: 0, total_items: 0 },
             };
             this.store.dispatch(setUsers({ users: users }));
-
-            console.log('REFRESH USERS THIS ERROR', this.users);
           }
         );
     }

@@ -1,6 +1,6 @@
 <div class="dashboard">
   <form class="dashboard-form" action="">
-    <h1>AUTH PROCESS</h1>
+    <h1>DASHBOARD</h1>
     <div class="dashboard-form-container-center">
       <div class="dashboard-form-controls">
         <div class="dashboard-form-controls-input">
@@ -20,7 +20,7 @@
             <li *ngFor="let app of dashboardModel.currentUser.apps">
               <h3>{{ app.name }}</h3>
               <p>{{ app.scope }}</p>
-              <a href="{{ '/' + app.url }}">{{ app.url }}</a>
+              <a href="{{ app.url }}">{{ app.url }}</a>
             </li>
           </ul>
         </div>

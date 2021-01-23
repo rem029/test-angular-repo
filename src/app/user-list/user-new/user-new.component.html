@@ -1,0 +1,64 @@
+<div class="user-new">
+  <form class="user-new-form" action="">
+    <h1>NEW USER</h1>
+    <div class="user-new-form-container-center">
+      <div class="user-new-form-controls">
+        <div class="user-new-form-controls-input">
+          <label for="email">EMAIL</label>
+          <input
+            type="email"
+            name="new-email"
+            placeholder="email"
+            [(ngModel)]="email"
+          />
+        </div>
+
+        <div class="user-new-form-controls-input">
+          <label for="password1">PASSWORD</label>
+          <input
+            type="password"
+            name="password1"
+            placeholder="Enter password"
+            [(ngModel)]="password1"
+          />
+        </div>
+
+        <div class="user-new-form-controls-input">
+          <label for="password2">CONFIRM PASSWORD</label>
+          <input
+            type="password"
+            name="password2"
+            placeholder="Confirm password"
+            [(ngModel)]="password2"
+          />
+        </div>
+
+        <div class="user-new-form-controls-apps">
+          <h2>APP LIST</h2>
+          <ul>
+            <li *ngFor="let app of apps; index as index">
+              <h3>{{ app.name }}</h3>
+              <p>{{ app.scope }}</p>
+              <a href="{{ app.url }}">{{ app.url }}</a>
+
+              <input
+                type="checkbox"
+                name="app-check"
+                checked="true"
+                [ngModel]="app.include"
+                (click)="appClick($event, app.id, index)"
+              />
+            </li>
+          </ul>
+        </div>
+        <p style="color: red; margin-top: 5px">{{ formStatus }}</p>
+        <div class="btn-container">
+          <button class="btn btn-submit" (click)="createUser()">CREATE</button>
+          <button class="btn btn-cancel" (click)="cancelCreateUser()">
+            CANCEL
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

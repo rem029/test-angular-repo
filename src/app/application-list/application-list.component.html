@@ -1,9 +1,23 @@
-<div class="app-list-container">
-  <div class="app-list">
-    <div class="app-list-heading">
-      <h2>APPS</h2>
-      <a href="#">add app</a>
+<div class="user-list-container">
+  <div class="user-list">
+    <div class="user-list-heading">
+      <h2>Application</h2>
+      <a href="#"
+        ><fa-icon [icon]="faPlusCircle" (click)="AppApps($event)"></fa-icon
+      ></a>
     </div>
-    <p style="text-align: center">APP LIST GOES HERE</p>
+    <div class="user-list-control">
+      <button (click)="appPrev()">
+        <fa-icon [icon]="faArrowLeft"></fa-icon>
+      </button>
+      <p>{{ appsModel._meta.page + " of " + appsModel._meta.total_pages }}</p>
+      <p>{{ "Total user:  " + appsModel._meta.total_items }}</p>
+      <button (click)="appNext()">
+        <fa-icon [icon]="faArrowRight"></fa-icon>
+      </button>
+    </div>
+    <div class="user-list-items">
+      <app-application></app-application>
+    </div>
   </div>
 </div>

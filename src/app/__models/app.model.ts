@@ -5,5 +5,6 @@ export interface AppModel {
   name: string;
   url: string;
   scope: string;
+  include?: boolean;
   users?: UserModel[];
 }

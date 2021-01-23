@@ -61,6 +61,8 @@ export class DashboardComponent implements OnInit {
               setCurrentUser({ dashBoardModel: dashboardModel })
             );
             this.store.dispatch(setLoggedIn({ isLoggedIn: false }));
+            this.store.dispatch(resetAuthState());
+            this.router.navigateByUrl(paths.auth);
           }
         );
     }

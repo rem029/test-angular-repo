@@ -1,0 +1,174 @@
+.user-new {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.user-new-form {
+  position: relative;
+
+  width: 50%;
+  max-width: 750px;
+  min-width: 300px;
+  height: 70%;
+  min-height: 750px;
+  max-height: 750px;
+
+  transform: translateY(100px);
+}
+
+.user-new-form-controls {
+  margin-top: 20px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.user-new-form-controls-input {
+  width: 100%;
+  max-width: 450px;
+  margin: 10px 0;
+}
+
+label {
+  font-family: "Noto Sans JP";
+  font-size: 12px;
+  font-weight: bold;
+  color: #929292;
+}
+
+input[type="checkbox"] {
+  margin: 0 10px;
+  height: 35px;
+  outline: none;
+  font-family: "Noto Sans JP";
+  font-size: 18px;
+  border: 2px solid #e2e2e2;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 98%;
+  max-width: 450px;
+  height: 35px;
+  outline: none;
+  font-family: "Noto Sans JP";
+  font-size: 18px;
+  border: 2px solid #e2e2e2;
+}
+
+input:focus {
+  border: 4px solid #000;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.btn {
+  margin: 10px 10px;
+  outline: none;
+  background-color: transparent;
+  border: 0;
+
+  width: 40%;
+  min-width: 75px;
+  max-width: 150px;
+  height: 50px;
+  border-radius: 50px;
+
+  font-family: "Noto Sans JP";
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-submit {
+  color: #00d23b;
+  border: 2px solid #00d23b;
+}
+
+.btn-submit:active {
+  background-color: #00d23b;
+  color: #ffffff;
+}
+
+.btn-cancel {
+  border: 2px solid red;
+  color: red;
+}
+
+.btn-cancel:active {
+  background-color: red;
+  color: #ffffff;
+}
+
+.user-new-form-controls-apps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+
+  width: 90%;
+}
+
+.user-new-form-controls-apps > ul {
+  border: 4px solid #000;
+  box-sizing: content-box;
+  width: 100%;
+}
+
+.user-new-form-controls-apps > ul > li {
+  text-decoration: none;
+  list-style-type: none;
+  font-size: 14px;
+  border-bottom: 2px solid #000;
+  padding: 0 5px;
+
+  position: relative;
+}
+
+.user-new-form-controls-apps > ul > li:nth-last-child(1) {
+  text-decoration: none;
+  list-style-type: none;
+  font-size: 14px;
+  padding: 0 5px;
+  border-bottom: 2px solid transparent;
+}
+
+.user-new-form-controls-apps > ul > li > h3,
+p {
+  display: inline-block;
+}
+
+.user-new-form-controls-apps > ul > li > p {
+  margin: 0 10px;
+}
+
+.user-new-form-controls-apps > ul > li > a {
+  display: block;
+  font-size: 12px;
+}
+
+.user-new-form-controls-apps > ul > li > input {
+  display: block;
+  position: absolute;
+
+  top: 0;
+  right: 0;
+}

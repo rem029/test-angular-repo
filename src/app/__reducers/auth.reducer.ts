@@ -53,12 +53,10 @@ const _authReducer = createReducer(
     });
   }),
   on(resetAuthState, (state) => {
-    console.log('RESET STATE', state);
     return Object.assign({}, state, { ...initialState });
   })
 );
 
 export function authReducer(state: any, action: Action) {
-  console.log('AUTH REDUCER', state);
   return _authReducer(state, action);
 }
