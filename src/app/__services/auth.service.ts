@@ -11,11 +11,7 @@ export class AuthService {
 
   private cookieTokenName = 'token';
 
-  constructor(private http: HttpClient, private cookie: CookieManager) {
-    if (this.tokenCheck()) {
-      console.log('INITIALIZE', this.tokenGet());
-    }
-  }
+  constructor(private http: HttpClient, private cookie: CookieManager) {}
 
   login(email: string, password: string) {
     const httpOptions = this.httpOptionsSetup('login', email, password);
@@ -43,21 +39,11 @@ export class AuthService {
   }
 
   private httpOptionsSetup(type: string, email?: string, password?: string) {
-    switch (type) {
-      case 'login':
-        return {
-          headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: 'Basic ' + btoa(email + ':' + password),
-          }),
-        };
-
-      default:
-        return {
-          headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-          }),
-        };
-    }
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + btoa(email + ':' + password),
+      }),
+    };
   }
 }

@@ -1,12 +1,13 @@
 .user {
   border: 5px solid #000;
   box-sizing: border-box;
-  margin: 2px 2px;
+  margin: 10px 2px;
   padding: 0 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  width: 100%;
 }
 
 .user-container-left {
@@ -26,6 +27,7 @@ label {
 }
 
 input {
+  margin: 5px 0;
   width: 90%;
   max-width: 450px;
   height: 35px;

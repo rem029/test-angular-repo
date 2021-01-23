@@ -1,0 +1,32 @@
+<div class="dashboard">
+  <form class="dashboard-form" action="">
+    <h1>AUTH PROCESS</h1>
+    <div class="dashboard-form-container-center">
+      <div class="dashboard-form-controls">
+        <div class="dashboard-form-controls-input">
+          <label for="email">EMAIL</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            disabled
+            [ngModel]="dashboardModel.currentUser.email"
+          />
+        </div>
+
+        <div class="dashboard-form-controls-apps">
+          <h2>APP LIST</h2>
+          <ul>
+            <li *ngFor="let app of dashboardModel.currentUser.apps">
+              <h3>{{ app.name }}</h3>
+              <p>{{ app.scope }}</p>
+              <a href="{{ '/' + app.url }}">{{ app.url }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <button class="btn-submit" (click)="logout()">LOGOUT</button>
+      </div>
+    </div>
+  </form>
+</div>

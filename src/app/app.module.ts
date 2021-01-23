@@ -10,11 +10,14 @@ import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './app-routing.module';
 
 import { sideBarReducer } from './__reducers/sidebar.reducer';
-import { loginReducer } from './__reducers/login.reducer';
+import { authReducer } from './__reducers/auth.reducer';
+import { dashboardReducer } from './__reducers/dashboard.reducer';
+import { usersReducer } from './__reducers/users.reducer';
 
 import { AppComponent } from './app.component';
 
 import { AuthComponent } from './auth/auth.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { UserListComponent } from './user-list/user-list.component';
 import { UserComponent } from './user-list/user/user.component';
@@ -28,11 +31,14 @@ import { HeaderSideBarComponent } from './header/header-sidebar/header-sidebar.c
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { paths } from './__paths/paths';
+
 const routes: Routes = [
-  { path: 'auth', component: AuthComponent },
-  { path: 'user-list', component: UserListComponent },
-  { path: 'application-list', component: ApplicationListComponent },
-  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  { path: paths.auth, component: AuthComponent },
+  { path: paths.dashboard, component: DashboardComponent },
+  { path: paths.userList, component: UserListComponent },
+  { path: paths.appList, component: ApplicationListComponent },
+  { path: '', redirectTo: '/' + paths.auth, pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -48,6 +54,7 @@ const routes: Routes = [
     PageNotFoundComponent,
     HeaderSideBarButton,
     HeaderSideBarComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +65,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     StoreModule.forRoot({
       isDrawerOpen: sideBarReducer,
-      loginShowPassword: loginReducer,
+      auth: authReducer,
+      dashboard: dashboardReducer,
+      users: usersReducer,
     }),
   ],
   exports: [RouterModule],

@@ -16,7 +16,7 @@
         <div class="login-form-controls-input">
           <label for="password">PASSWORD</label>
           <input
-            type="{{ logInModel.toggleShowPassword ? 'text' : 'password' }}"
+            type="{{ authModel.toggleShowPassword ? 'text' : 'password' }}"
             name="password"
             placeholder="password"
             [(ngModel)]="password"
@@ -31,11 +31,16 @@
             (click)="toggleShowPassword($event)"
           />
         </div>
+
         <div class="login-form-controls-form-stat">
-          <p>{{ logInModel.isLoggedInError ? "Log in failed." : "" }}</p>
+          <p>{{ authModel.isLoggedInError ? "Log in failed." : "" }}</p>
           <p>{{ formStatus.length > 0 ? formStatus : "" }}</p>
         </div>
-        <button class="btn-submit" (click)="onLogin()">LOGIN</button>
+
+        <button class="btn-submit" (click)="onLogin()">
+          LOGIN
+          <fa-icon [icon]="faSpinner" *ngIf="authModel.isLoading"></fa-icon>
+        </button>
       </div>
     </div>
   </form>

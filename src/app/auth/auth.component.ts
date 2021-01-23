@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import { AuthService } from '../__services/auth.service';
-import { LogInAuthModel } from '../__models/login-auth.model';
+import { AuthModel } from '../__models/auth.model';
 import {
   toggleShowPassword,
   onLoginError,
   onLoginSuccess,
-} from '../__actions/login.action';
+  onLoading,
+  onLoadingDone,
+} from '../__actions/auth.action';
+import { paths } from '../__paths/paths';
 
 @Component({
   selector: 'app-login',
@@ -16,38 +21,49 @@ import {
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
+  paths = paths;
+
   email: string = '';
   password: string = '';
-  logInModel: LogInAuthModel = {
+  authModel: AuthModel = {
     toggleShowPassword: false,
     isLoggedIn: false,
     isLoggedInError: false,
+    isLoading: false,
     token: '',
     lastCode: 0,
   };
   formStatus = '';
+  faSpinner = faSpinner;
 
   constructor(
-    private store: Store<{ loginShowPassword: LogInAuthModel }>,
+    private store: Store<{ auth: AuthModel }>,
     private http: HttpClient,
-    private loginAuthService: AuthService
+    private router: Router,
+    private authService: AuthService
   ) {
-    this.store.select('loginShowPassword').subscribe((value) => {
-      this.logInModel = value;
+    this.store.select('auth').subscribe((value) => {
+      this.authModel = value;
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.authService.tokenCheck()) {
+      this.router.navigateByUrl(paths.dashboard);
+    }
+  }
 
   onLogin() {
     this.formStatus = '';
     if (this.email.length > 0 && this.password.length > 0) {
-      this.loginAuthService.login(this.email, this.password).subscribe(
+      this.store.dispatch(onLoading());
+
+      this.authService.login(this.email, this.password).subscribe(
         (response: any) => {
           this.store.dispatch(
             onLoginSuccess({
-              logInAuthModel: {
-                ...this.logInModel,
+              authModel: {
+                ...this.authModel,
                 token: response.data.jwt,
                 isLoggedIn: true,
                 isLoggedInError: false,
@@ -55,14 +71,15 @@ export class AuthComponent implements OnInit {
               },
             })
           );
-
-          this.loginAuthService.tokenSave(this.logInModel.token);
+          this.store.dispatch(onLoadingDone());
+          this.authService.tokenSave(this.authModel.token);
+          this.reload();
         },
         (error: any) => {
           this.store.dispatch(
             onLoginError({
-              logInAuthModel: {
-                ...this.logInModel,
+              authModel: {
+                ...this.authModel,
                 token: '',
                 isLoggedIn: true,
                 isLoggedInError: true,
@@ -70,7 +87,8 @@ export class AuthComponent implements OnInit {
               },
             })
           );
-          this.loginAuthService.tokenDelete();
+          this.store.dispatch(onLoadingDone());
+          this.authService.tokenDelete();
         }
       );
     } else {
@@ -80,5 +98,9 @@ export class AuthComponent implements OnInit {
 
   toggleShowPassword(event: any) {
     this.store.dispatch(toggleShowPassword());
+  }
+
+  reload() {
+    window.location.reload();
   }
 }

@@ -54,6 +54,10 @@ a {
   color: #32db57;
 }
 
-.link-login {
+.link-auth {
   font-size: 20px;
+}
+
+.link-dashboard {
+  font-size: 12px;
 }

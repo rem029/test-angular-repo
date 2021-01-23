@@ -1,18 +1,21 @@
 <nav class="{{ isDrawerOpen ? 'side-bar open' : 'side-bar' }}">
   <ul>
     <li routerLinkActive="link-active">
-      <a (click)="onClickLink()" routerLink="/app-user-list">
+      <a (click)="onClickLink()" routerLink="{{ '/' + paths.userList }}">
         <fa-icon [icon]="faUsers"></fa-icon>
       </a>
     </li>
     <li routerLinkActive="link-active">
-      <a (click)="onClickLink()" routerLink="/app-application-list">
+      <a (click)="onClickLink()" routerLink="{{ '/' + paths.appList }}">
         <fa-icon [icon]="faLaptop"></fa-icon>
       </a>
     </li>
     <li routerLinkActive="link-active">
-      <a class="link-login" (click)="onClickLink()" routerLink="/app-login"
-        >LOGIN</a
+      <a
+        class="{{ authModel.isLoggedIn ? 'link-dashboard' : 'link-auth' }}"
+        (click)="onClickLink()"
+        routerLink="{{ '/' + paths.auth }}"
+        >{{ authModel.isLoggedIn ? "DASHBOARD" : "LOGIN" }}</a
       >
     </li>
   </ul>
