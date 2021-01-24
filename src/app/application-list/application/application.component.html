@@ -5,9 +5,8 @@
     <p>{{ app.scope }}</p>
     <a href="{{ app.url }}">{{ app.url }}</a>
   </div>
-
+  <h4>Users</h4>
   <div class="app-container-users">
-    <h4>Users</h4>
     <p *ngFor="let user of users">{{ user.email }}</p>
   </div>
 </div>
