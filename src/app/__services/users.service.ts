@@ -18,7 +18,7 @@ export class UsersService {
     );
   }
 
-  getUsers(token: string, page: number = 1, per_page: number = 50) {
+  getUsers(token: string, page: number = 1, per_page: number = 100) {
     return this.http.get(
       this.url +
         this.apiPath +

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faUsers, faLaptop } from '@fortawesome/free-solid-svg-icons';
 
 import { Store } from '@ngrx/store';
-import { setLoggedIn } from 'src/app/__actions/auth.action';
+import { resetAuthState, setLoggedIn } from 'src/app/__actions/auth.action';
 import { setCurrentUser } from 'src/app/__actions/dashboard.action';
 import { AuthModel } from 'src/app/__models/auth.model';
 import { DashboardModel } from 'src/app/__models/dashboard.model';
@@ -82,6 +82,8 @@ export class HeaderSideBarComponent implements OnInit {
               setCurrentUser({ dashBoardModel: dashboardModel })
             );
             this.storeDashboard.dispatch(setLoggedIn({ isLoggedIn: false }));
+            this.authService.tokenDelete();
+            this.storeAuth.dispatch(resetAuthState());
           }
         );
     }

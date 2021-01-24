@@ -34,6 +34,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { paths } from './__paths/paths';
 import { appsReducer } from './__reducers/apps.reducers';
+import { ApplicationNewComponent } from './application-list/application-new/application-new.component';
 
 const routes: Routes = [
   { path: paths.auth, component: AuthComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: paths.userList, component: UserListComponent },
   { path: paths.userListNew, component: UserNewComponent },
   { path: paths.appList, component: ApplicationListComponent },
+  { path: paths.appListNew, component: ApplicationNewComponent },
   { path: '', redirectTo: '/' + paths.auth, pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
@@ -59,6 +61,7 @@ const routes: Routes = [
     HeaderSideBarComponent,
     DashboardComponent,
     UserNewComponent,
+    ApplicationNewComponent,
   ],
   imports: [
     BrowserModule,

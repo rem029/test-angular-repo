@@ -81,9 +81,9 @@ export class UserListComponent implements OnInit {
     }
   }
 
-  AddUser(event: any) {
+  addUser(event: any) {
     event.preventDefault();
-    this.router.navigateByUrl(paths.userListNew);
+    this.router.navigateByUrl(paths.appListNew);
   }
 
   refreshUsers(page: number, per_page: number) {

@@ -19,6 +19,7 @@ import {
   appsNextPage,
   appsPrevPage,
 } from '../__actions/apps.action';
+import { paths } from '../__paths/paths';
 
 @Component({
   selector: 'app-application-list',
@@ -54,7 +55,7 @@ export class ApplicationListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.refreshApps(this.appsModel._meta.page, this.appsModel._meta.per_page);
+    this.refreshApps(1, 10);
   }
 
   appNext() {
@@ -77,9 +78,9 @@ export class ApplicationListComponent implements OnInit {
     }
   }
 
-  AppApps(event: any) {
+  addApps(event: any) {
     event.preventDefault();
-    // this.router.navigateByUrl(paths.userListNew);
+    this.router.navigateByUrl(paths.appListNew);
   }
 
   refreshApps(page: number, per_page: number) {

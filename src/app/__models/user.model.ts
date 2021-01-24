@@ -5,4 +5,5 @@ export interface UserModel {
   email: string;
   passtoken?: string;
   apps?: AppModel[];
+  include?: boolean;
 }

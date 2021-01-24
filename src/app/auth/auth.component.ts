@@ -12,6 +12,7 @@ import {
   onLoginSuccess,
   onLoading,
   onLoadingDone,
+  resetAuthState,
 } from '../__actions/auth.action';
 import { paths } from '../__paths/paths';
 
@@ -89,6 +90,7 @@ export class AuthComponent implements OnInit {
           );
           this.store.dispatch(onLoadingDone());
           this.authService.tokenDelete();
+          this.store.dispatch(resetAuthState());
         }
       );
     } else {

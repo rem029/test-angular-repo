@@ -10,6 +10,14 @@ export class AppsService {
 
   constructor(private http: HttpClient) {}
 
+  createApps(token: string, body: {}) {
+    return this.http.post(
+      this.url + this.apiPath + this.apiParamScope,
+      body,
+      this.httpOptionsSetup(token)
+    );
+  }
+
   getApps(token: string, page: number = 1, per_page: number = 50) {
     return this.http.get(
       this.url +

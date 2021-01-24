@@ -1,1 +1,13 @@
-<p>application works!</p>
+<div class="app">
+  <div class="app-container-app">
+    <!-- <label for="email">EMAIL</label> -->
+    <input type="email" disabled value="{{ app.name }}" />
+    <p>{{ app.scope }}</p>
+    <a href="{{ app.url }}">{{ app.url }}</a>
+  </div>
+
+  <div class="app-container-users">
+    <h4>Users</h4>
+    <p *ngFor="let user of users">{{ user.email }}</p>
+  </div>
+</div>

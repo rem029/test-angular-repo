@@ -1,0 +1,55 @@
+<div class="app-new">
+  <form class="app-new-form" action="">
+    <h1>NEW APPLICATION</h1>
+    <div class="app-new-form-container-center">
+      <div class="app-new-form-controls">
+        <div class="app-new-form-controls-input">
+          <label for="name">APP NAME</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="app name"
+            [(ngModel)]="appName"
+          />
+        </div>
+
+        <div class="app-new-form-controls-input">
+          <label for="url">URL</label>
+          <input type="text" name="url" placeholder="url" [(ngModel)]="url" />
+        </div>
+
+        <div class="app-new-form-controls-input">
+          <label for="scope">SCOPE</label>
+          <input
+            type="text"
+            name="scope"
+            placeholder="scope"
+            [(ngModel)]="scope"
+          />
+        </div>
+        <h2>USER LIST</h2>
+        <div class="app-new-form-controls-users">
+          <ul>
+            <li *ngFor="let user of users; index as index">
+              <input
+                type="checkbox"
+                name="app-check"
+                checked="true"
+                [ngModel]="user.include"
+                (click)="userClick($event, user.id, index)"
+              />
+              <h3>{{ user.email }}</h3>
+            </li>
+          </ul>
+        </div>
+        <p style="color: red; margin-top: 5px">{{ formStatus }}</p>
+        <div class="btn-container">
+          <button class="btn btn-submit" (click)="createApps()">CREATE</button>
+          <button class="btn btn-cancel" (click)="cancelCreateApps()">
+            CANCEL
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

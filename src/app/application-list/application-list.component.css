@@ -1,4 +1,4 @@
-.user-list-container {
+.app-list-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@
   width: 100%;
 }
 
-.user-list {
+.app-list {
   position: relative;
 
   width: 50%;
@@ -25,7 +25,7 @@
   transform: translateY(100px);
 }
 
-.user-list-heading {
+.app-list-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,18 +36,18 @@
   color: #fff;
 }
 
-.user-list-heading > a,
+.app-list-heading > a,
 h2 {
   margin: 5px 0;
 }
 
-.user-list-heading > a {
+.app-list-heading > a {
   text-decoration: none;
   color: #32db57;
   font-size: 24px;
 }
 
-.user-list-items {
+.app-list-items {
   overflow-x: hidden;
   overflow-y: scroll;
 
@@ -77,7 +77,7 @@ h2 {
   background: #000;
 }
 
-.user-list-control {
+.app-list-control {
   background-color: #000;
   padding: 5px 5px;
 
@@ -86,7 +86,7 @@ h2 {
   align-items: center;
 }
 
-.user-list-control > button {
+.app-list-control > button {
   background-color: transparent;
   color: #fff;
   outline: none;
@@ -102,11 +102,11 @@ h2 {
   align-items: center;
 }
 
-.user-list-control > button:active {
+.app-list-control > button:active {
   background-color: #fff;
   color: #000;
 }
 
-.user-list-control > p {
+.app-list-control > p {
   color: #fff;
 }
